@@ -49,6 +49,9 @@ class Move:
             if move.weight and not template.weight:
                 setattr(template, 'weight', move.weight)
                 setattr(template, 'weight_uom', move.weight_uom)
+                if hasattr(template, 'weight_net'):
+                    setattr(template, 'weight_net', move.weight)
+                    setattr(template, 'weight_net_uom', move.weight_uom)
                 templates.append(template)
         Template.save(templates)
         return moves
